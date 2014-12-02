@@ -46,40 +46,44 @@ div.row.center
 
   div.col-md-4
     div.back style="height: 339px"
-      img#monster_image src=""
+      h3#name
       div.caption
-        h3#counter
+        img#monster_image src=""
         br
-        h3#name
+        h3#counter
 
 
 
 javascript:
   jQuery(document).ready(function($) {
 
+
     new_monster() // После загрузки страницы сразу запускаем функцию new_monster()
 
     function new_monster(){
       // Получаем из экшена Main#monster json-данные, раскидываем их по странице
       $.get( "/get_new_monster.json", function( data ) {
-        $("#name").text(data.monster.iName)
-        $("#monster_image").attr("src", "https://raw.githubusercontent.com/jFoxSingularity/OlderBase/master/pictures/mobs/" + data.monster.ID + ".gif")
+
 
       // Разные переменные
       var progress = data.user.exp / (data.exp[data.user.lvl + 1] / 100)
 
-
-
       // Параметры для счётчика
-      var options = {useEasing : false, useGrouping : false, separator : ',', decimal : '.', prefix : '', suffix : ''}
+      var options = {useEasing : false, useGrouping : false, separator : ',', decimal : '.', prefix : '', suffix : ' hp'}
+
+
+        $(".progress-bar").css("width", + progress + "%"),
+        $("#name").text(data.monster.iName)
+        $("#monster_image").attr("src", "https://raw.githubusercontent.com/jFoxSingularity/OlderBase/master/pictures/mobs/" + data.monster.ID + ".gif")
+
       
       // Сам счётчик с параметрами: ("место отображения", начало, конец, группировка, время, параметры)
       var monster_hp = new countUp("counter", data.monster.HP, 0, 0, data.monster.HP / #{@str}, options);
 
       // Запускаем счётчик и в нём указываем - какие действия совершать по истечении срока
       monster_hp.start(function(){
-        
-        $.post("/shine",{exp: exp}),
+        $.post("/exp",{exp: data.monster.EXP}),
+        $("#exp").text(data.user.exp + " exp")
         $(".progress-bar").css("width", + progress + "%"),
         // Запускаем счётчик заново
         new_monster()

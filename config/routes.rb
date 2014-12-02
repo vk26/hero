@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   get 'get_new_monster', to: 'main#monster'
 
 
+  # Users
+    post 'exp', to: 'users#exp'
+
   # Route special for me
     get 'fox', to: 'main#fox'
 
