@@ -9,6 +9,11 @@ Rails.application.routes.draw do
   # Users
     post 'exp', to: 'users#exp'
 
+
+  # Maps
+    get 'map', to: 'maps#index', as: :map
+
+
   # Route special for me
     get 'fox', to: 'main#fox'
 
