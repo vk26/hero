@@ -7,5 +7,16 @@ div.row.center
         p
           | Здесь вы пройдёте обучение и получите первую профессию по достижении 15-уровня.
         p
-          a href="#" class="btn btn-primary" role="button" Перейти
+          button#new_zone03 class="btn btn-success" Перейти
         br
+
+
+
+
+
+javascript:
+
+  $( "#new_zone03" ).click(function() {
+    $.post("/location", {location: "new_zone03"}),
+    console.log('ok')
+  });

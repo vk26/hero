@@ -13,7 +13,7 @@ class MainController < ApplicationController
 
       @exp = [0, 660, 1080, 1800, 2640, 3840, 4560, 5040, 5460, 6000, 6600, 7200, 7320, 7620, 8040, 8820, 9600, 10080, 10560, 11040]
 
-      @monster = Monster.where("LV < 5").sample
+      @monster = Map.find_by_name(current_user.location).monsters.sample
 
 
       respond_to do |format|

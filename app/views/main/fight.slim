@@ -1,22 +1,3 @@
-/ h1#exp hi
-/ br
-/ br
-/ br
-/ hr
-/ h3#monster sf
-/ br
-/ br
-/ br
-/ a#link href="#" Reload
-
-
-/ br
-/ br
-/ br
-/ hr
-/ img#mob src=""
-
-
 = content_for(:page_title, current_user.username)
 div.row.center
 
@@ -73,17 +54,17 @@ javascript:
 
 
         $(".progress-bar").css("width", + progress + "%"),
-        $("#name").text(data.monster.iName)
-        $("#monster_image").attr("src", "https://raw.githubusercontent.com/jFoxSingularity/OlderBase/master/pictures/mobs/" + data.monster.ID + ".gif")
+        $("#name").text(data.monster.name)
+        $("#monster_image").attr("src", "/images/monsters/" + data.monster.id + ".gif")
 
       
       // Сам счётчик с параметрами: ("место отображения", начало, конец, группировка, время, параметры)
-      var monster_hp = new countUp("counter", data.monster.HP, 0, 0, data.monster.HP / #{@str}, options);
+      var monster_hp = new countUp("counter", data.monster.hp, 0, 0, data.monster.hp / #{@str}, options);
 
       // Запускаем счётчик и в нём указываем - какие действия совершать по истечении срока
       monster_hp.start(function(){
-        $.post("/exp",{exp: data.monster.EXP}),
-        $("#exp").text(data.user.exp + " exp")
+        $.post("/exp",{exp: data.monster.exp}),
+        $("#exp").text(data.user.exp + data.monster.exp + " exp")
         $(".progress-bar").css("width", + progress + "%"),
         // Запускаем счётчик заново
         new_monster()

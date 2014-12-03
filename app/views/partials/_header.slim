@@ -12,8 +12,8 @@ div.navbar.navbar-inverse
     ul.nav.navbar-nav
       li
         / = link_to 'Top-100', players_path
-      - if current_user
-        = link_to 'Карта мира', map_path
+        - if current_user
+          = link_to 'Карта мира', map_path
       /   li
       /     = link_to 'Fight!', fight_index_path
       /   li

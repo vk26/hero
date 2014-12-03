@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   # Users
     post 'exp', to: 'users#exp'
+    post 'location', to: 'users#location'
 
 
   # Maps

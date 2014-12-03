@@ -11,13 +11,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141202081208) do
+ActiveRecord::Schema.define(version: 20141203143501) do
+
+  create_table "maps", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "monsters", force: true do |t|
+    t.string  "name"
+    t.integer "lvl"
+    t.integer "hp"
+    t.integer "sp"
+    t.integer "exp"
+    t.integer "jexp"
+    t.integer "atk"
+    t.integer "def"
+    t.integer "mdef"
+    t.integer "str"
+    t.integer "agi"
+    t.integer "vit"
+    t.integer "int"
+    t.integer "dex"
+    t.integer "luk"
+    t.integer "map_id"
+    t.string  "element"
+    t.integer "item_drop"
+    t.float   "item_chance",  limit: 24
+    t.integer "equip_drop"
+    t.float   "equip_chance", limit: 24
+    t.integer "quest_drop"
+    t.float   "quest_chance", limit: 24
+    t.integer "card_drop"
+    t.float   "card_chance",  limit: 24
+  end
 
   create_table "users", force: true do |t|
     t.string   "username"
     t.string   "gender"
     t.string   "job"
     t.string   "bio"
+    t.string   "location",               default: "new_zone03"
     t.integer  "lvl",                    default: 1
     t.integer  "exp",                    default: 0
     t.integer  "hp",                     default: 40
@@ -32,12 +67,12 @@ ActiveRecord::Schema.define(version: 20141202081208) do
     t.integer  "luk",                    default: 1
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email",                  default: "",   null: false
-    t.string   "encrypted_password",     default: "",   null: false
+    t.string   "email",                  default: "",           null: false
+    t.string   "encrypted_password",     default: "",           null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,    null: false
+    t.integer  "sign_in_count",          default: 0,            null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
