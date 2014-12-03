@@ -1,7 +1,6 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+Map.create!([
+  {name: "new_zone03"}
+])
+Monster.create!([
+  {name: "Poring", lvl: 1, hp: 50, sp: 0, exp: 2, jexp: 1, atk: 1, def: 0, mdef: 5, str: 1, agi: 1, vit: 1, int: 0, dex: 6, luk: 30, map_id: 1, element: "water_3", item_drop: 512, item_chance: 10.0, equip_drop: 1201, equip_chance: 1.0, quest_drop: 713, quest_chance: 15.0, card_drop: 4001, card_chance: 0.01}
+])
