@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :gender
       t.string :job
       t.string :bio
+      t.string :location
       t.integer :lvl, default: 1
       t.integer :exp, default: 0
       t.integer :hp, default: 40
