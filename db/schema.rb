@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141203143501) do
+ActiveRecord::Schema.define(version: 20141203204031) do
+
+  create_table "items", force: true do |t|
+    t.string  "name"
+    t.string  "format"
+    t.integer "price_sell"
+    t.integer "weight"
+    t.integer "attack"
+    t.integer "defence"
+    t.integer "slots"
+    t.string  "jobs"
+    t.string  "genders"
+    t.integer "weapon_lvl"
+    t.boolean "refine"
+    t.string  "script"
+  end
 
   create_table "maps", force: true do |t|
     t.string   "name"

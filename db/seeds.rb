@@ -1,3 +1,6 @@
+Item.create!([
+  {name: "knife", format: "weapon", price_sell: 25, weight: 40, attack: 17, defence: 0, slots: 4, jobs: "all", genders: "both", weapon_lvl: 1, refine: true, script: ""}
+])
 Map.create!([
   {name: "new_zone03"}
 ])
