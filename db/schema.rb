@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20141203143501) do
     t.string   "location",               default: "new_zone03"
     t.integer  "lvl",                    default: 1
     t.integer  "exp",                    default: 0
+    t.integer  "next",                   default: 660
     t.integer  "hp",                     default: 40
     t.integer  "sp",                     default: 11
     t.integer  "statpoint",              default: 24

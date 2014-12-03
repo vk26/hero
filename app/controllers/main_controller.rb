@@ -11,13 +11,13 @@ class MainController < ApplicationController
   # Новый монстр в формате JSON
     def monster
 
-      @exp = [0, 660, 1080, 1800, 2640, 3840, 4560, 5040, 5460, 6000, 6600, 7200, 7320, 7620, 8040, 8820, 9600, 10080, 10560, 11040]
+      # @exp = [0, 660, 1080, 1800, 2640, 3840, 4560, 5040, 5460, 6000, 6600, 7200, 7320, 7620, 8040, 8820, 9600, 10080, 10560, 11040]
 
       @monster = Map.find_by_name(current_user.location).monsters.sample
 
 
       respond_to do |format|
-        format.json {render json: {user: current_user, monster: @monster, exp: @exp}}
+        format.json {render json: {user: current_user, monster: @monster}}
       end
 
 
@@ -26,7 +26,7 @@ class MainController < ApplicationController
 
 
     def fox
-      current_user.update(str: 15)
+      current_user.update(str: 15, exp: 658, next: 660)
       redirect_to root_path
     end
 
