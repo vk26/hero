@@ -21,7 +21,6 @@ div.row.center
           div.progress.progress-striped.active
             div.progress-bar style="width: 0%"
 
-
   div.col-md-4
     h2 VS
 
@@ -63,7 +62,7 @@ javascript:
 
       // Запускаем счётчик и в нём указываем - какие действия совершать по истечении срока
       monster_hp.start(function(){
-        $.post("/exp",{exp: data.monster.exp}),
+        $.post("/exp",{exp: data.monster.exp, monster_id: data.monster.id}),
         $("#exp").text(data.user.exp + data.monster.exp + " exp")
         $(".progress-bar").css("width", + progress + "%"),
         // Запускаем счётчик заново
