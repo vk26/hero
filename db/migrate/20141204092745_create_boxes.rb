@@ -3,7 +3,7 @@ class CreateBoxes < ActiveRecord::Migration
     create_table :boxes do |t|
       t.integer :user_id
       t.integer :item_id
-      t.integer :ea_id
+      t.integer :ea
       t.string  :format
       t.integer :equip_locations
       t.integer :price

@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20141204092745) do
   create_table "boxes", force: true do |t|
     t.integer  "user_id"
     t.integer  "item_id"
-    t.integer  "ea_id"
+    t.integer  "ea"
     t.string   "format"
     t.integer  "equip_locations"
     t.integer  "price"
