@@ -1,0 +1,149 @@
+div.row.center
+
+  div.col-md-4
+    div.back style="height: 339px"
+      = image_tag "jobs/#{current_user.job}/#{current_user.gender}.gif"
+      div.caption
+        h3
+          = current_user.username
+        h4
+          = current_user.job
+        p.lead style="color: ghostwhite;"
+          = current_user.bio
+        h4
+          = current_user.zeny
+          |  zeny
+
+  div.col-md-4
+    div.back style="height: 339px"
+      h3 Level: #{current_user.lvl}
+      h4 Exp: #{current_user.exp} / #{current_user.next}
+      div.col-md-10.col-md-offset-1.progress.progress-striped.active
+        div.progress-bar style="width: #{(current_user.exp / (current_user.next / 100)).to_i}%"
+
+  div.col-md-4
+    div.back style="height: 339px"
+      h3 Stats:
+      a.btn.btn-success href="#" style="width: 100px"
+        | Str: 
+        span#str
+          = current_user.str
+      br
+      br
+      a.btn.btn-success href="#" style="width: 100px"
+        | Luck: 
+        span#luk
+          = current_user.luk
+
+      h4
+        | Statpoints: 
+        span#stats
+          = current_user.statpoint
+
+hr
+div.row.center
+  div.col-md-12
+    div.row.back
+      div.col-md-3
+        div.thumbnail
+          - if @head
+            h4 Head
+            = image_tag ('https://raw.githubusercontent.com/jFoxSingularity/OlderBase/master/pictures/fullsize/' + @head.item_id.to_s + '.gif')
+            div.caption
+              h3
+                = link_to @head.item.name, item_path(@head.item_id)
+              p
+                | Defence: 
+                b
+                  = @head.item.defence
+              - if current_user == current_user
+                p
+                  = link_to "Снять", {:controller => :items, :action => 'equip', :equip_type => 1, :equip_id => @head.id}, :method => :put, class: 'btn btn-warning btn-xs'
+          - else
+            h4
+            div.caption
+              h3 Empty
+      div.col-md-3
+        div.thumbnail
+          - if @body
+            h4 Body
+            = image_tag ('https://raw.githubusercontent.com/jFoxSingularity/OlderBase/master/pictures/fullsize/' + @body.item_id.to_s + '.gif')
+            div.caption
+              - if @body
+                h3
+                  = link_to @body.item.name, item_path(@body.item_id)
+                p
+                  | Defence: 
+                  b
+                    = @body.item.defence
+                - if current_user == current_user
+                  p
+                    = link_to "Снять", {:controller => :items, :action => 'equip', :equip_type => 16, :equip_id => @body.id}, :method => :put, class: 'btn btn-warning btn-xs'
+          - else
+            h4
+            div.caption
+              h3 Empty                    
+      div.col-md-3
+        div.thumbnail
+          - if @hand
+            h4 Hand
+            = image_tag ('https://raw.githubusercontent.com/jFoxSingularity/OlderBase/master/pictures/fullsize/'+ @hand.item_id.to_s + '.gif')
+            div.caption
+                h3
+                  = link_to @hand.item.name, item_path(@hand.item_id)
+                p
+                  | Atack: 
+                  b
+                    = @hand.item.attack
+                div
+                  - if current_user == current_user
+                    p
+                      = link_to "Снять", {:controller => :items, :action => 'equip', :equip_type => 2, :equip_id => @hand.id}, :method => :put, class: 'btn btn-warning btn-xs'
+          - else
+            h4
+            div.caption
+              h3 Empty                      
+      div.col-md-3
+        div.thumbnail
+          - if @shoes
+            h4 Shoes
+            = image_tag ('https://raw.githubusercontent.com/jFoxSingularity/OlderBase/master/pictures/fullsize/' + @shoes.item_id.to_s + '.gif')
+            div.caption
+              h3
+                = link_to @shoes.item.name, item_path(@shoes.item_id)
+              p
+                | Defence:
+                b
+                  = @shoes.item.defence
+              - if current_user == current_user
+                p
+                  = link_to "Снять", {:controller => :items, :action => 'equip', :equip_type => 64, :equip_id => @shoes.id}, :method => :put, class: 'btn btn-warning btn-xs'
+          - else
+            h4
+            div.caption
+              h3 Empty
+    hr
+
+
+
+
+javascript:
+  $( "#str" ).parent().click(function() {
+    $.get( "/get_new_monster.json", function( data ) {
+      if ($("#stats").text() != 0){
+        $("#str").text(data.user.str + 1),
+        $("#stats").text(data.user.statpoint - 1),
+        $.post("/stats", {str: 1})
+        }
+    })
+  })
+
+  $( "#luk" ).parent().click(function() {
+    $.get( "/get_new_monster.json", function( data ) {
+      if ($("#stats").text() != 0){
+        $("#luk").text(data.user.luk + 1),
+        $("#stats").text(data.user.statpoint - 1),
+        $.post("/stats", {luk: 1})
+        }
+    })
+  })

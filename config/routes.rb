@@ -7,7 +7,9 @@ Rails.application.routes.draw do
 
 
   # Users
+    resources :users
     post 'exp', to: 'users#exp'
+    post 'stats', to: 'users#stats'
     post 'location', to: 'users#location'
 
 

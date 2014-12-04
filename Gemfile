@@ -35,10 +35,10 @@ gem 'jquery-rails'
 gem 'coffee-rails'
 gem 'slim'
 gem 'sass-rails'
-gem 'turbolinks'
+# gem 'turbolinks'
 gem 'uglifier'
 gem 'jbuilder'
-gem 'jquery-turbolinks'
+# gem 'jquery-turbolinks'
 
 # Other gems
 gem 'kaminari'

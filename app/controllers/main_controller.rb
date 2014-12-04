@@ -21,7 +21,7 @@ class MainController < ApplicationController
 
   # Специальный тестовый экшен для Лиса =D
     def fox
-      current_user.update(str: 15, exp: 658)
+      current_user.update(str: 15, exp: 640)
       redirect_to root_path
     end
 

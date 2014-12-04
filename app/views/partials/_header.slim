@@ -32,10 +32,11 @@ div.navbar.navbar-inverse
       /     = link_to 'Shop', shop_path
 
     ul.nav.navbar-nav.navbar-right
-      / - if current_user
-      /   li.dropdown
-      /     a href="#" class="dropdown-toggle" data-toggle="dropdown"
-      /       = current_user.name.capitalize
+      - if current_user
+        li
+          = link_to current_user.username, user_path(current_user.id)
+        li
+          = link_to " Выйти", destroy_user_session_path, method: 'delete'
       /     ul.dropdown-menu.center style="padding: 15px;min-width: 250px;"
       /       li
       /         = image_tag "jobs/#{current_user.job}/#{current_user.gender}.gif"
@@ -59,8 +60,6 @@ div.navbar.navbar-inverse
       /         div.progress.progress-striped.active
       /           div.progress-bar style="width: #{(current_user.exp*100/@cur_player_next_lvl_exp+1).to_i}%"
 
-      /   li
-      /     = link_to 'Logout', logout_path
       / - else
       /   li
       /     = link_to "Sign in with Twitter", "/auth/twitter"
